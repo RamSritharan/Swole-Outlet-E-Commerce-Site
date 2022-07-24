@@ -1,5 +1,8 @@
-from email.mime import image
+#from email.mime import image
 from django.db import models
+from django.urls import reverse
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Product(models.Model):
@@ -10,6 +13,24 @@ class Product(models.Model):
   product_description = models.TextField(max_length=250)
   #image = models.ImageField(upload_to="images/")
 
+
+
   def __str__(self):
-        return self.name
+    return self.name
+
+  def get_absolute_url(self):
+    return reverse('detail', kwargs={'product_id':self.id})
+
+
+
+
+class Orders(models.Model):
+  date = models.DateField('order date')
+  quantity_purchased = models.IntegerField()
+  total = models.IntegerField() 
+  product = models.ForeignKey(Product, on_delete=models.CASCADE)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    
+      
 
