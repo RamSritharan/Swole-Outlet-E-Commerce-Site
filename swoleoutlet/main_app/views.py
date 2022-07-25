@@ -8,8 +8,6 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-
 # Define the home view
 def home(request):
   return redirect('about') 
@@ -25,7 +23,6 @@ def products_index(request):
 def products_detail(request, product_id):
     product = Product.objects.get(id=product_id)
     return render(request, 'product/detail.html', { 'product': product  })
-
 
 
 def assoc_order(request, product_id, order_id):

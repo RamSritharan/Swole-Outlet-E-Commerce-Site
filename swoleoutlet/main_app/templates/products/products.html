@@ -11,6 +11,28 @@
     <p>Quantity: {{ product.quantity_available }}</p>
     <p>Description: {{ product.product_description }}</p>
   </div>
+  <button class="view">Add Item to Cart</button>
 </div>
+<script>
+  let pEl = document.querySelector(".view");
+
+  let cart = [];
+
+  pEl.addEventListener("click", function (e) {
+    cart.push(e.target.textContent);
+    jsonCart = JSON.stringify(cart);
+    localStorage.setItem("cart", jsonCart);
+  });
+
+  pEl.addEventListener("click", function (e) {
+    let item = localStorage.getItem("cart");
+    console.log(JSON.parse(item));
+    fetch("/orders/create", {
+      method: "POST",
+      headers: "",
+      body: JSON.stringify({ items: localStorage.getItem(cart) }),
+    });
+  });
+</script>
 
 {% endfor %} {% endblock %}

@@ -33,6 +33,15 @@ class Product(models.Model):
     return reverse('detail', kwargs={'product_id':self.id})
 
 
+# class customer(models.Model)
+#   name = models.CharField(max_length=100)
+#   customer_address = models.CharField(max_length=100)
+#   customer_city = models.CharField(max_length=100)
+#   #user = models.ForeignKey(User, on_delete=models.CASCADE)
+#   orders = models.ForeignKey(Order, on_delete=models.CASCADE)
+
+#   def __str__(self):
+#       return self.name
 
 
     

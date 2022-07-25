@@ -16,6 +16,7 @@ urlpatterns = [
   path('orders/<int:pk>/update/', views.OrderUpdate.as_view(), name='Orders_update'),
   path('orders/<int:pk>/delete/', views.OrderDelete.as_view(), name='Orders_delete'),
   path('accounts/signup/', views.signup, name='signup'),
+  # Adding in cart
 
 
 ]
