@@ -3,8 +3,20 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+class Order(models.Model):
+  date = models.DateField('order date')
+  products = models.CharField(max_length=100)
+  quantity_purchased = models.IntegerField()
+  total = models.IntegerField() 
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-# Create your models here.
+  def __str__(self):
+      return self.name
+
+  def get_absolute_url(self):
+    return reverse('Orders_detail', kwargs={'pk': self.id})
+
+
 class Product(models.Model):
   name = models.CharField(max_length=100)
   product_type = models.CharField(max_length=100)
@@ -12,8 +24,7 @@ class Product(models.Model):
   quantity_available = models.IntegerField()
   product_description = models.TextField(max_length=250)
   #image = models.ImageField(upload_to="images/")
-
-
+  orders = models.ManyToManyField(Order)
 
   def __str__(self):
     return self.name
@@ -23,13 +34,6 @@ class Product(models.Model):
 
 
 
-
-class Orders(models.Model):
-  date = models.DateField('order date')
-  quantity_purchased = models.IntegerField()
-  total = models.IntegerField() 
-  product = models.ForeignKey(Product, on_delete=models.CASCADE)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     
       
