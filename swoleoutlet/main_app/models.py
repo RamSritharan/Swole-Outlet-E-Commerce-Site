@@ -26,6 +26,8 @@ class Product(models.Model):
   #image = models.ImageField(upload_to="images/")
   orders = models.ManyToManyField(Order)
 
+
+
   def __str__(self):
     return self.name
 

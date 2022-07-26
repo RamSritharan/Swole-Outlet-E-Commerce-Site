@@ -3,14 +3,97 @@
 <h1>Product List</h1>
 
 {% for product in products %}
-<div class="card">
+<div id="{{product.id}}" class="card">
   <div class="card-content">
-    <span class="card-title">{{ product.name }}</span>
-    <p>Type: {{ product.product_type }}</p>
-    <p>Price: {{ product.price }}</p>
+    <span class="card-title" data-product="{{product.id}}"
+      >{{ product.name }}</span
+    >
+    <p data-product="{{product.id}}">Type: {{ product.product_type }}</p>
+    <p data-product="{{product.id}}">Price: {{ product.price }}</p>
     <p>Quantity: {{ product.quantity_available }}</p>
     <p>Description: {{ product.product_description }}</p>
+
+    <button class="increment">+</button><input type="number" /><button
+      class="decrement"
+    >
+      -
+    </button>
+    <button data-product="{{product.id}}" class="add-to-cart">
+      Add to cart
+    </button>
   </div>
 </div>
+
+<button class="view-cart">View Cart</button>
+
+<script>
+  let productCard = document.querySelector("#product.id");
+
+  // productCard.addEventListener("click", () => {
+  //   const productObj = {
+  //     name: productCard.name,
+  //     type: productCard.type,
+  //     price: productCard.price,
+  //   };
+  //   console.log(productObj);
+  // });
+  let addCart = document.querySelector(".add-to-cart"); //look up dynamic event listeners (event delegation)
+  let viewCart = document.querySelector(".view-cart");
+  let decrement = document.querySelector(".decrement");
+  let cart = [];
+  // const { name, price } = cartItem;
+
+  addCart.addEventListener("click", function (e) {
+    let productAttributeID = e.target.getAttribute("data-product");
+    //css selector to plug in queryselector
+
+    console.log(productAttributeID);
+    // cart.push(cartItem[0]);
+    // let jsonCart = JSON.stringify(cart);
+    // localStorage.setItem("cart", jsonCart);
+  });
+
+  // viewCart.addEventListener("click", function () {
+  //   let item = localStorage.getItem("cart");
+  //   console.log(JSON.parse(item));
+  // });
+
+  // decrement.addEventListener("click", function () {
+  //   let storageProducts = JSON.parse(localStorage.getItem("products"));
+  //   let products = storageProducts.filter(
+  //     (product) => product.productId !== productId
+  //   );
+  //   localStorage.setItem("products", JSON.stringify(products));
+  // });
+
+  // product = json.dumps(product);
+  // jsProducts = JSON.parse(product);
+
+  // if (localStorage.getItem("cart")) {
+  //   cart = JSON.parse(localStorage.getItem("cart"));
+  // }
+
+  // let tbody = document.getElementById("tbody");
+
+  // for (let id in cart) {
+  //   let item = cart[id];
+
+  //   let tr = document.createElement("tr");
+
+  //   let title_td = document.createElement("td");
+  //   title_td.textContent = item.title;
+  //   tr.appendChild(title_td);
+
+  //   let price_td = document.createElement("td");
+  //   price_td.textContent = item.price;
+  //   tr.appendChild(price_td);
+
+  //   let qty_td = document.createElement("td");
+  //   qty_td.textContent = item.qty;
+  //   tr.appendChild(qty_td);
+
+  //   tbody.appendChild(tr);
+  // }
+</script>
 
 {% endfor %} {% endblock %}
