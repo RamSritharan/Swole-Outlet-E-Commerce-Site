@@ -5,13 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Swole Outlet</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:ital,wght@1,700&family=Questrial&display=swap");
+    </style>
   </head>
   <body>
     {% extends 'base.html' %} {% block content %}
-    <h1>Welcome to Swole Outlet</h1>
+    <h1>
+      <img src="../static/images/swoledoge.jpeg" width="7%" height="7%" />
+      Welcome to Swole Outlet
+    </h1>
 
     <hr />
-    <p>Come to the Swole Outlet Store!</p>
+     <p>Come to the Swole Outlet Store!</p>
+    <div class="hwrap"><div class="hmove">
+      <div class="hslide">
+        <p>FREE RETURNS NOW FOR 30 DAYS*</p>
+      </div>
+      <div class="hslide">
+        <p>FREE STANDARD SHIPPING WHEN YOU SPEND MORE THAN $100*</p>
+      </div>
+      <div class="hslide">
+        <p>SALE      SALE      SALE
+    </div>
+    <div class="shirts">
+      <img src="../static/images/shirt.jpeg" width="50%" , height="50%" />
+      <p>Shop T-Shirts</p>
+    </div>
+    <div class="shorts">
+      <img src="../static/images/shorts.jpeg" width="50%" , height="50%" />
+      <p>Shop Shorts</p>
+    </div>
 
     {% endblock %}
     <footer>All Rights Reserved, &copy; 2022 Swole Outlet</footer>

@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Log In</h1>
+<h1>
+  <img src="../../static/images/swoledoge.jpeg" width="7%" height="7%" />Login
+</h1>
+<hr />
 
 <form method="post" action="{% url 'login' %}">
   {% csrf_token %} {{ form.as_p }}

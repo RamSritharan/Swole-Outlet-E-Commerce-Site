@@ -24,7 +24,7 @@ class Product(models.Model):
   quantity_available = models.IntegerField()
   product_description = models.TextField(max_length=250)
   #image = models.ImageField(upload_to="images/")
-  orders = models.ManyToManyField(Order)
+  # orders = models.ManyToManyField(Order)
 
   def __str__(self):
     return self.name
