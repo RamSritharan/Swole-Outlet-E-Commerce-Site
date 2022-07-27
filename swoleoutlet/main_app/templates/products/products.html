@@ -22,7 +22,7 @@
     </p>
     <p>Price:<p id="product-price" data-product="{{product.id}}" class="product-price">
       {{product.price}}
-    </p></p><
+    </p></p>
     <!-- <p id="product-quantity" class="product-quantity">
       Quantity: {{ product.quantity_available }}
     </p> -->
@@ -45,42 +45,33 @@
 </div>
 
 <script>
-  let productId = parseInt(document.getElementById("product-id").textContent.trim());
-  let productName = document.getElementById("product-name").textContent.trim();
-  let productType = document.getElementById("product-type").textContent.trim();
-  let productPrice = parseInt(document
-    .getElementById("product-price")
-    .textContent.trim());
-    
-  let cartObj = {
-    id: productId,
-    name: productName,
-    type: productType,
-    price: productPrice,
-    quantity: 0,
-  };
-  let cart = [];
-  console.log(cartObj);
+
 
   let addCart = document.querySelector(".container");
-   //look up dynamic event listeners (event delegation)
   let viewCart = document.querySelector("view-cart");
 
   addCart.addEventListener("click", function (e) {
-    if (e.target.classList.contains("add-to-cart")) {
-      cart.push(cartObj);
-      cartObj.quantity++;
-      localStorage.setItem("setObject", JSON.stringify(cartObj));
-    } 
-    console.log(e.target.classList.contains("add-to-cart"));
-    console.log(e.target.dataset);
+    let productId = e.target.getAttribute("data-product");
+    let productArray = document.querySelectorAll(`[data-product~="${productId}"]`)
+
+    let cartObj = {
+      id: productArray[0].innerHTML.trim(),
+      name: productArray[1].innerHTML.trim(),
+      type: productArray[2].innerHTML.trim(),
+      price: parseInt(productArray[3].innerHTML.trim()),
+    }
     
+    let cart = []
+    cart.push(cartObj); 
+
+    console.log(cart)
+    
+    let jsonCart = JSON.stringify(cart);
+    localStorage.setItem("cart", jsonCart);
+    
+    //create a js file, have table row. document.createelment(td) save that to a variable. 
   });
 
-  viewCart.addEventListener("click", function () {
-    let getObject = localStorage.getItem("setObject");
-    console.log("retrievedObject: ", JSON.parse(getObject));
-  });
 </script>
 
 {% endfor %} 
