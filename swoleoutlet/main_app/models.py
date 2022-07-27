@@ -23,10 +23,16 @@ class Product(models.Model):
   price = models.IntegerField()
   quantity_available = models.IntegerField()
   product_description = models.TextField(max_length=250)
+<<<<<<< HEAD
   # image = models.ImageField(upload_to="main_app/static/css/images", null=True, blank=True)
   orders = models.ManyToManyField(Order, null = True, blank=True)
 
 
+=======
+  # image = models.ImageField(upload_to="main_app/static/css/images")
+  image = models.ImageField(upload_to="main_app/static/css/images", null=True, blank=True)
+  orders = models.ManyToManyField(Order, null = True, blank=True)
+>>>>>>> 498b4e5f9c821e62c97a888f264a7ab24e683a44
 
   def __str__(self):
     return self.name
