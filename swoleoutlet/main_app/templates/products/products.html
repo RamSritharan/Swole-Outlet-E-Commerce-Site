@@ -5,15 +5,35 @@
 </h1>
 <hr />
 
-{% for product in products %}
-<div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ product.name }}</span>
-    <p>Type: {{ product.product_type }}</p>
-    <p>Price: {{ product.price }}</p>
-    <p>Quantity: {{ product.quantity_available }}</p>
-    <p>Description: {{ product.product_description }}</p>
+<div class="container">
+  {% for product in products %}
+  <div class="column">
+    <!-- <img src="../../static/images/shirt.jpeg" width="30%" height="30%" /> -->
+    {% if product.image %}
+    <img src="{{product.image.url}}" width="30%" height="30%"/>
+    {% endif %}
+    <!-- <div class="card">
+        <div class="card-content"> -->
+    <!-- <span class="card-title">{{ product.name }}</span> -->
+    <p>{{ product.name }}</br>{{ product.product_description }}</br> ${{ product.price }} </p>
+    <!-- <p>Type: {{ product.product_type }}</p> -->
+    <!-- <p>${{ product.price }}</p> -->
+    <!-- <p>Quantity: {{ product.quantity_available }}</p> -->
+    <!-- <p>{{ product.product_description }}</p> -->
+    <!-- </div>
+      </div> -->
+      
+        <input type="submit" class="btn-add" value="Add To Cart" />
   </div>
+</br>
 </div>
-
 {% endfor %} {% endblock %}
+
+<!-- <form
+        action="{% url 'cart' product.id %}"
+        method="post"
+        class="center-align"
+      > -->
+<!-- {% csrf_token %}
+     <input type="submit" class="btn-large" value="Add {{ product.price }}" /> -->
+<!-- </form> -->

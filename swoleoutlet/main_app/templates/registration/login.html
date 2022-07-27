@@ -5,10 +5,11 @@
 </h1>
 <hr />
 
-<form method="post" action="{% url 'login' %}">
-  {% csrf_token %} {{ form.as_p }}
-  <input type="submit" class="btn" value="login" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
-
+<div class="login-page">
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" class="btn-add" value="LOGIN" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+</div>
 {% endblock %}
