@@ -1,16 +1,28 @@
 {% extends "base.html" %} {% block content %}
 
-
 <h1>Welcome to your cart</h1>
 
-<div id="{{product.id}}" class="card">
-  <div class="card-content">
-    </body>
-
-
+<div class="list">
+  <div class="card">
+    <div class="card-content"></div>
   </div>
 </div>
-<script defer src="/main_app/static/CSS/javascript/cart.js"
+<script defer src="/main_app/static/javascript/cart.js">
+  console.log(cartItems);
 
+  let productList = document.querySelector(".list");
+
+  if (cartItems > 0) {
+    cartItems.forEach(function (m) {
+      let product = document.createElement("div");
+      product.className = `product-card - ${m.id}`;
+      product.querySelector(`product-card - ${m.id}`);
+      product.innerHTML(`${m.id}`);
+      productList.appendChild(product);
+      console.log(product);
+
+    });
+  }
+</script>
 
 {% endblock %}
