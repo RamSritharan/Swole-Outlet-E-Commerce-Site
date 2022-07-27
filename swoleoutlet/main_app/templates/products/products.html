@@ -5,13 +5,27 @@
 {% for product in products %}
 <div id="{{product.id}}" class="card">
   <div class="card-content">
-    <span class="card-title" data-product="{{product.id}}"
-      >{{ product.name }}</span
+    <span
+      class="card-title product-name"
+      id="product-name"
+      data-product="{{product.id}}"
+      >{{product.name}}</span
     >
-    <p data-product="{{product.id}}">Type: {{ product.product_type }}</p>
-    <p data-product="{{product.id}}">Price: {{ product.price }}</p>
-    <p>Quantity: {{ product.quantity_available }}</p>
-    <p>Description: {{ product.product_description }}</p>
+    <p hidden id="product-id" data-product="{{product.id}}" class="product-id">
+      {{product.id}}
+    </p>
+    <p id="product-type" data-product="{{product.id}}" class="product-type">
+      {{product.product_type}}
+    </p>
+    <p id="product-price" data-product="{{product.id}}" class="product-price">
+      {{product.price}}
+    </p>
+    <p id="product-quantity" class="product-quantity">
+      Quantity: {{ product.quantity_available }}
+    </p>
+    <p id="product-description" class="product-description">
+      Description: {{ product.product_description }}
+    </p>
 
     <button class="increment">+</button><input type="number" /><button
       class="decrement"
@@ -24,76 +38,35 @@
   </div>
 </div>
 
-<button class="view-cart">View Cart</button>
+<li><a href=“/cart”>Cart</a></li>
 
 <script>
-  let productCard = document.querySelector("#product.id");
+  let productId = document.getElementById("product-id").textContent.trim();
+  let productName = document.getElementById("product-name").textContent.trim();
+  let productType = document.getElementById("product-type").textContent.trim();
+  let productPrice = document
+    .getElementById("product-price")
+    .textContent.trim();
+  let productPriceInt = parseInt(productPrice);
 
-  // productCard.addEventListener("click", () => {
-  //   const productObj = {
-  //     name: productCard.name,
-  //     type: productCard.type,
-  //     price: productCard.price,
-  //   };
-  //   console.log(productObj);
-  // });
+  let cartObj = {
+    id: productId,
+    name: productName,
+    type: productType,
+    price: productPriceInt,
+  };
+  console.log(cartObj);
+
   let addCart = document.querySelector(".add-to-cart"); //look up dynamic event listeners (event delegation)
-  let viewCart = document.querySelector(".view-cart");
-  let decrement = document.querySelector(".decrement");
-  let cart = [];
-  // const { name, price } = cartItem;
-
-  addCart.addEventListener("click", function (e) {
-    let productAttributeID = e.target.getAttribute("data-product");
-    //css selector to plug in queryselector
-
-    console.log(productAttributeID);
-    // cart.push(cartItem[0]);
-    // let jsonCart = JSON.stringify(cart);
-    // localStorage.setItem("cart", jsonCart);
+  let viewCart = document.querySelector("view-cart");
+  addCart.addEventListener("click", function () {
+    localStorage.setItem("setObject", JSON.stringify(cartObj));
   });
 
-  // viewCart.addEventListener("click", function () {
-  //   let item = localStorage.getItem("cart");
-  //   console.log(JSON.parse(item));
-  // });
-
-  // decrement.addEventListener("click", function () {
-  //   let storageProducts = JSON.parse(localStorage.getItem("products"));
-  //   let products = storageProducts.filter(
-  //     (product) => product.productId !== productId
-  //   );
-  //   localStorage.setItem("products", JSON.stringify(products));
-  // });
-
-  // product = json.dumps(product);
-  // jsProducts = JSON.parse(product);
-
-  // if (localStorage.getItem("cart")) {
-  //   cart = JSON.parse(localStorage.getItem("cart"));
-  // }
-
-  // let tbody = document.getElementById("tbody");
-
-  // for (let id in cart) {
-  //   let item = cart[id];
-
-  //   let tr = document.createElement("tr");
-
-  //   let title_td = document.createElement("td");
-  //   title_td.textContent = item.title;
-  //   tr.appendChild(title_td);
-
-  //   let price_td = document.createElement("td");
-  //   price_td.textContent = item.price;
-  //   tr.appendChild(price_td);
-
-  //   let qty_td = document.createElement("td");
-  //   qty_td.textContent = item.qty;
-  //   tr.appendChild(qty_td);
-
-  //   tbody.appendChild(tr);
-  // }
+  viewCart.addEventListener("click", function () {
+    let getObject = localStorage.getItem("setObject");
+    console.log("retrievedObject: ", JSON.parse(getObject));
+  });
 </script>
 
 {% endfor %} {% endblock %}

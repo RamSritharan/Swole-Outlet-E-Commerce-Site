@@ -56,6 +56,9 @@ class OrderDelete(LoginRequiredMixin, DeleteView):
   model = Order
   success_url = '/orders/'
 
+def cart_index(request):
+  return render(request, "products/cart.html", {})
+
 
 def signup(request):
   error_message = ''
