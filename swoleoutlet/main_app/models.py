@@ -11,6 +11,7 @@ class Order(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 #add boolean field if order went through or not
+#order_complete/ order_went_thorugh = models.BooleanField(default = 0)
 
   def __str__(self):
       return self.name
