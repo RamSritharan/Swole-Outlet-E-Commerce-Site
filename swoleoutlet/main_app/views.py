@@ -1,4 +1,6 @@
 from itertools import product
+from .forms import ReviewForm
+
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -7,6 +9,7 @@ from .models import Product, Order
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 
@@ -73,3 +76,21 @@ def signup(request):
 
 def cart_index(request):
   return render(request, 'products/cart.html', {})
+
+
+def product(request, product_id):
+  product = Product.objects.get(id=product_id)
+  review_form = ReviewForm()
+  return render(request, 'order_list.html', {
+    'product': product, 'review_form': review_form
+  })  
+
+def add_review(request, product_id):
+ form = ReviewForm(request.POST)
+ if form.is_valid():
+  new_review = form.save(commit=False)
+  new_review.product_id = product_id
+  new_review.save()
+  return redirect('order_list', product_id=product_id)
+
+

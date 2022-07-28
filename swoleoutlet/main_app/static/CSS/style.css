@@ -17,10 +17,29 @@ h1 {
   font-size: 60px;
 }
 
+.review-form {
+  border-radius: 5px;
+  background-color: #fffdea;
+  padding: 20px;
+  justify-content: center;
+  display: flex;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ffcf1f;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
 table,
 td,
 th {
-  border: 1px solid #ffcf1f;
+  border: 2px solid #ffcf1f;
 }
 
 table {
@@ -53,14 +72,15 @@ ul {
   text-align: left;
   width: 100%;
 }
-
+.btn-submit,
+.btn-review,
 .btn-buy,
 .btn-add,
 .view-cart {
   border: none;
   color: white;
   padding: 16px 32px;
-  text-align: right;
+  text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
@@ -70,12 +90,30 @@ ul {
   background-color: #fffdea;
   color: black;
   border: 2px solid #ffcf1f;
-  justify-content: right;
+  justify-content: space-between;
   height: 60px;
+  border-radius: 1.5em;
 }
 
-.btn-buy,
-.btn-remove,
+.btn-remove {
+  border: none;
+  color: white;
+  transition-duration: 0.4s;
+  text-align: right;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  background-color: #fffdea;
+  color: black;
+  border: 2px solid #ffcf1f;
+  margin: 4px 2px;
+  border-radius: 1.5em;
+}
+
+.btn-submit:hover,
+.btn-review:hover,
+.btn-buy:hover,
+.btn-remove:hover,
 .btn-add:hover,
 .view-cart:hover {
   background-color: #ffcf1f;
@@ -90,7 +128,7 @@ ul {
 
 .column {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-evenly;
   align-items: center;
 }
 

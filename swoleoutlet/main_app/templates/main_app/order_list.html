@@ -1,7 +1,86 @@
 {% extends 'base.html' %} {% block content %}
 <h1>
-  <img src="../static/images/swoledoge.jpeg" width="7%" height="7%" />Order List
+  <img src="../static/images/swoledoge.jpeg" width="7%" height="7%" /> Reviews
 </h1>
 <hr />
+
+<div class="review-form">
+  <form href="/order_list" method="POST">
+    {% csrf_token %}
+    <div clas="row">
+      <div class="col-75">
+        <input
+          type="text"
+          id="fname"
+          name="firstname"
+          placeholder="Your Name"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-75">
+        <select id="country" name="country">
+          <option value="shirt">Shirt</option>
+          <option value="shorts">Shorts</option>
+          <option value="equipment">Equipment</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-75">
+        <select id="rating" name="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+    </div>
+     <!-- <div class="row">
+      <div class="col-75">
+        <textarea
+          id="subject"
+          name="subject"
+          placeholder="Write a review"
+          style="height: 250px"
+        ></textarea>
+      </div>
+    </div> -->
+    <div class="row">
+      <button class="btn-submit" type="submit" value="Submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+<div class="col s6">
+  <form action="/order_list" method="POST">
+    {% csrf_token %}
+    {{ review_form.as_p }}
+    
+  </form>
+  <table class="striped">
+    <thead>
+      <tr><th>Name</th><th>Product</th><th>Rating</th></tr>
+    </thead>
+    <tbody>
+      {% for review in product.review_set.all %}
+        <tr>
+          <td>{{review.name}}</td>
+          <td>{{review.product}}</td>
+          <td>{{review.rating}}</td>
+          <td>{{review.get_rating_display}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!-- <input type="submit" class="btn" value="Add Review"> -->
+</div>
+</div>
+
+<!-- <script>
+  var selectEl = document.getElementById('id_rating');
+  M.FormSelect.init(selectEl);
+</script> -->
 
 {% endblock %}
