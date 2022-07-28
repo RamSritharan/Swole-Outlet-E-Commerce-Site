@@ -1,19 +1,23 @@
 {% extends 'base.html' %} {% block content %}
 <h1>
-  <img src="../static/images/swoledoge.jpeg" width="7%" height="7%" />Cart
+  <img src="../static/images/swoledoge.jpeg" width="7%" height="7%" /> Your Cart
 </h1>
 <hr />
-<!-- <h1>Product List</h1> -->
 
-{% for product in products %}
-<div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ product.name }}</span>
-    <p>Type: {{ product.product_type }}</p>
-    <p>Price: {{ product.price }}</p>
-    <!-- <p>Quantity: {{ product.quantity_available }}</p> -->
-    <p>Description: {{ product.product_description }}</p>
-  </div>
+<p>ITEMS IN YOUR CART</p>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+    <th>Total</th>
+  </tr>
+  <td>Shorts</td>
+  <td>1 <button type="button" class="btn-remove">Remove</button></td>
+  <td>$$$</td>
+  <td>quantity * Subtotal</td>
+</table>
+<div class="checkout">
+  <button type="button" class="btn-buy">Check Out</button>
 </div>
-
-{% endfor %} {% endblock %}
+{% endblock %}

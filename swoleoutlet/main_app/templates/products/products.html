@@ -8,32 +8,59 @@
 <div class="container">
   {% for product in products %}
   <div class="column">
-    <!-- <img src="../../static/images/shirt.jpeg" width="30%" height="30%" /> -->
     {% if product.image %}
     <img src="{{product.image.url}}" width="30%" height="30%"/>
     {% endif %}
     <!-- <div class="card">
         <div class="card-content"> -->
     <!-- <span class="card-title">{{ product.name }}</span> -->
-    <p>{{ product.name }}</br>{{ product.product_description }}</br> ${{ product.price }} </p>
-    <!-- <p>Type: {{ product.product_type }}</p> -->
-    <!-- <p>${{ product.price }}</p> -->
-    <!-- <p>Quantity: {{ product.quantity_available }}</p> -->
-    <!-- <p>{{ product.product_description }}</p> -->
+    <!-- <p>{{ product.name }}</br>{{ product.product_description }}</br> ${{ product.price }} </p> -->
+    
+    <p hidden id="product-id" data-product="{{product.id}}" class="product-id">
+      {{product.id}}
+    </p>
+    <p id="product-name" data-product="{{product.id}}" class="product-name">
+      {{product.name}}
+    </p>
+    <p hidden id="product-type" data-product="{{product.id}}" class="product-type">
+      {{product.product_type}}
+    </p>
+    <p id="product-price" data-product="{{product.id}}" class="product-price">
+     $ {{product.price}}
+    </p>
+    <p id="product-description" class="product-description">
+      Description: {{ product.product_description }}
+    </p>
     <!-- </div>
       </div> -->
-      
-        <input type="submit" class="btn-add" value="Add To Cart" />
+        <!-- <input type="submit" class="btn-add" value="Add To Cart" /> -->
+        <button data-product="{{product.id}}" class="btn-add">
+          Add to cart
+        </button>
+        <button class="view-cart">
+          View Cart
+        </button>
   </div>
 </br>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %} 
+<script>
+  let addCart = document.querySelector(".container");
+   //look up dynamic event listeners (event delegation)
+  let viewCart = document.querySelector("view-cart");
+  addCart.addEventListener("click", function (e) {
+    let productId = e.target.getAttribute("data-product");
+    let productArray = document.querySelectorAll(`[data-product~="${productId}"]`)
+    let cartObj = {
+      id: productArray[0].innerHTML.trim(),
+      name: productArray[1].innerHTML.trim(),
+      type: productArray[2].innerHTML.trim(),
+      price: parseInt(productArray[3].innerHTML.trim()),
+    }
+    console.log(cartObj)
+    jsonCart = JSON.stringify(cartObj);
+    localStorage.setItem("cart", jsonCart);
+  });
+</script>
+{% endblock %}
 
-<!-- <form
-        action="{% url 'cart' product.id %}"
-        method="post"
-        class="center-align"
-      > -->
-<!-- {% csrf_token %}
-     <input type="submit" class="btn-large" value="Add {{ product.price }}" /> -->
-<!-- </form> -->
