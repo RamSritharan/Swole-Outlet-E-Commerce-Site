@@ -7,20 +7,20 @@
     <div class="card-content"></div>
   </div>
 </div>
-<script defer src="/main_app/static/javascript/cart.js">
+<script>
+  let cartItemsFromHT = localStorage.getItem("cart");
+  let cartItems = JSON.parse(cartItemsFromHT);
   console.log(cartItems);
 
   let productList = document.querySelector(".list");
-
-    cartItems.forEach(function (m) {
-      let product = document.createElement("div");
-      product.className = `product-card - ${m.id}`;
-      product.querySelector(`product-card - ${m.id}`);
-      product.innerHTML(`${m.id}`);
-      productList.appendChild(product);
-      console.log(product);
-
-    });
+  cartItems.forEach(function (m) {
+    document.createElement("div");
+    product.className = `product-card - ${m.id}`;
+    newProduct = product.querySelector(`product-card - ${m.id}`);
+    newProduct.innerHTML(`${m.id}`);
+    newProduct.appendChild(product);
+    console.log("hello", product);
+  });
 </script>
 
 {% endblock %}
