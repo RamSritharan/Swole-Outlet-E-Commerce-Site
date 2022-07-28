@@ -9,6 +9,7 @@ class Order(models.Model):
   quantity_purchased = models.IntegerField()
   total = models.IntegerField() 
   user = models.ForeignKey(User, on_delete=models.CASCADE)
+  paid = models.BooleanField(default=False)
 
 #add boolean field if order went through or not
 #order_complete/ order_went_thorugh = models.BooleanField(default = 0)

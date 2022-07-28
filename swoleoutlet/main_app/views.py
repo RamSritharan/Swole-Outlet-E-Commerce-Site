@@ -87,6 +87,9 @@ def cart_index(request):
 
 class CreateCheckoutSeshView(View):
   def post(self, request, *args, **kwargs):
+    order = Order.objects.create(creator=request.user)
+    order.save()
+    order.items.add(*[product.price])
     price = Product.objects.filter(product_id = id).price # clarify how to grab price for product
     YOUR_DOMAIN = "http://localhost:8000/"
     checkout_session = stripe.checkout.Session.create ( #storing stripe api in variable checkout session
@@ -97,14 +100,19 @@ class CreateCheckoutSeshView(View):
           },
         ],
         mode='payment',
-        success_url=YOUR_DOMAIN + '/success',
-        cancel_url=YOUR_DOMAIN + '/cart',
+        success_url='/success'{order.id},
+        cancel_url='/cart'{order.id},
     )
     return redirect(checkout_session.url) 
 
-class SuccessView(TemplateView):
-    template_name = "success.html"
 
+def success_view(request, pk):
+  order = Order.objects.get(id=pk)
+  order.paid = True 
+  order.save() 
+  return render(request, "success.html")
 
-class CancelView(TemplateView):
-    template_name = "cancel.html"
+def cancel_view(request, pk):
+  order = Order.objects.get(id=pk)
+  order.delete()
+  return render(request, "cancel.html")

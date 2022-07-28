@@ -18,7 +18,7 @@ urlpatterns = [
   path('orders/<int:pk>/update/', views.OrderUpdate.as_view(), name='Orders_update'),
   path('orders/<int:pk>/delete/', views.OrderDelete.as_view(), name='Orders_delete'),
   path('accounts/signup/', views.signup, name='signup'),
-  path('cancel/', CancelView.as_view(), name='cancel'),
-  path('success/', SuccessView.as_view(), name='success'),
-  path('create-checkout-session/<pk>/', CreateCheckoutSessionView.as_view(), name='create-checkout-session')
+  path('cancel/<int:pk>', views.cancel_view , name='cancel'),
+  path('success/<int:pk>', views.succes_view, name='success'),
+  path('create-checkout-session/<pk>/', views.CreateCheckoutSessionView.as_view(), name='create-checkout-session')
 ]
