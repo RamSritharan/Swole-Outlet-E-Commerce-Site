@@ -73,6 +73,8 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 def cart_index(request):
+  
+
   total=0
   for item in cart.items.all():
     total += item.price
