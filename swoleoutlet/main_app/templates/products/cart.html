@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<h1>
+  <img src="../static/images/swoledoge.jpeg" width="7%" height="7%" /> Your Cart
+</h1>
+<hr />
+
+<p>ITEMS IN YOUR CART</p>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+    <th>Total</th>
+  </tr>
+  <td>Shorts</td>
+  <td>1 <button type="button" class="btn-remove">Remove</button></td>
+  <td>$$$</td>
+  <td>quantity * Subtotal</td>
+</table>
+<div class="checkout">
+  <button type="button" class="btn-buy">Check Out</button>
+</div>
+{% endblock %}

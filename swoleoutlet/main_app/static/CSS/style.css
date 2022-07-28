@@ -2,6 +2,124 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-color: #ffffff;
+  font-family: "Indie Flower", cursive;
+  font-family: "Lato", sans-serif;
+  font-family: "Questrial", sans-serif;
+  font-size: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Indie Flower", cursive;
+  font-family: "Lato", sans-serif;
+  font-family: "Questrial", sans-serif;
+  font-size: 60px;
+}
+
+table,
+td,
+th {
+  border: 1px solid #ffcf1f;
+}
+
+table {
+  text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+  border-color: #ffcf1f;
+}
+
+.footer {
+  background-color: #ffcf1f;
+  text-align: center;
+  font-size: 17px;
+  color: white;
+  margin-top: 100px;
+  padding: 20px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.login-page {
+  text-align: center;
+}
+
+.sign-up {
+  text-align: left;
+  width: 100%;
+}
+
+.btn-buy,
+.btn-add,
+.view-cart {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: right;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: #fffdea;
+  color: black;
+  border: 2px solid #ffcf1f;
+  justify-content: right;
+  height: 60px;
+}
+
+.btn-buy,
+.btn-remove,
+.btn-add:hover,
+.view-cart:hover {
+  background-color: #ffcf1f;
+  color: white;
+}
+
+.checkout {
+  display: flex;
+  align-items: right;
+  text-align: right;
+}
+
+.column {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  position: relative;
+}
+
+.button-container a {
+  position: absolute;
+  bottom: 30em;
+  right: 43em;
+  background-color: #ffcf1f;
+  border-radius: 1.5em;
+  color: white;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+}
+
+.homemessage {
+  text-align: center;
+}
+
+.nav-wrapper {
+  text-align: right;
+}
+
+.material-icons {
+  text-decoration: none;
 }
 
 main {
@@ -11,4 +129,58 @@ main {
 footer.page-footer {
   padding-top: 0;
   text-align: right;
+}
+
+.hwrap {
+  text-align: center;
+  width: 100%;
+  height: 70px;
+  background: #fffdea;
+  border: 2px solid #ffcf1f;
+  overflow: hidden;
+}
+
+.hmove {
+  display: flex;
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
+.hslide {
+  width: 100%;
+  height: 100px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+@keyframes slideh {
+  0% {
+    right: 0;
+  }
+  30% {
+    right: 0;
+  }
+  33% {
+    right: 100%;
+  }
+  63% {
+    right: 100%;
+  }
+  66% {
+    right: 200%;
+  }
+  97% {
+    right: 200%;
+  }
+  100% {
+    right: 0;
+  }
+}
+.hmove {
+  animation: slideh linear 15s infinite;
+}
+.hmove:hover {
+  animation-play-state: paused;
 }
