@@ -72,4 +72,10 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 def cart_index(request):
-  return render(request, 'products/cart.html', {})
+      return render(request, "products/cart.html", {})
+
+
+
+def products_index(request):
+    products = Product.objects.all()
+    return render(request, 'products/products.html', { 'products': products })

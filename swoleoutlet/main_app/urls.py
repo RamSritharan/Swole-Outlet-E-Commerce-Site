@@ -13,10 +13,10 @@ urlpatterns = [
   # unassociate a order and product
   path('products/<int:product_id>/unassoc_order/<int:order_id>/', views.unassoc_order, name='unassoc_order'),
   path('orders/', views.OrderList.as_view(), name='Orders_index'),
-  path('orders/<int:pk>/', views.OrderDetail.as_view(), name='Orders_detail'),
-  path('orders/create/', views.OrderCreate.as_view(), name='Orders_create'),
-  path('orders/<int:pk>/update/', views.OrderUpdate.as_view(), name='Orders_update'),
-  path('orders/<int:pk>/delete/', views.OrderDelete.as_view(), name='Orders_delete'),
+  # path('orders/<int:pk>/', views.OrderDetail.as_view(), name='Orders_detail'),
+  # path('orders/create/', views.OrderCreate.as_view(), name='Orders_create'),
+  # path('orders/<int:pk>/update/', views.OrderUpdate.as_view(), name='Orders_update'),
+  # path('orders/<int:pk>/delete/', views.OrderDelete.as_view(), name='Orders_delete'),
   path('accounts/signup/', views.signup, name='signup'),
 
 ]

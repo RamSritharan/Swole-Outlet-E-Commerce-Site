@@ -24,14 +24,25 @@ class Product(models.Model):
   quantity_available = models.IntegerField()
   product_description = models.TextField(max_length=250)
   # image = models.ImageField(upload_to="main_app/static/css/images")
-  image = models.ImageField(upload_to="main_app/static/css/images", null=True, blank=True)
-  orders = models.ManyToManyField(Order, null = True, blank=True)
+  # image = models.ImageField(upload_to="main_app/static/css/images", null=True, blank=True)
+  #orders = models.ManyToManyField(Order, null = True, blank=True)
 
   def __str__(self):
     return self.name
 
   def get_absolute_url(self):
     return reverse('detail', kwargs={'product_id':self.id})
+
+
+# class Cart(models.Model):
+#       name = models.CharField(max_length=100)
+#   product_type = models.CharField(max_length=100)
+#   price = models.IntegerField()
+#   quantity_purchased = models.IntegerField()
+#   #product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+#   def __str__(self):
+#       return self.name
 
 
 

@@ -26,7 +26,7 @@
       {{product.product_type}}
     </p>
     <p id="product-price" data-product="{{product.id}}" class="product-price">
-     $ {{product.price}}
+    {{product.price}}
     </p>
     <p id="product-description" class="product-description">
       Description: {{ product.product_description }}
@@ -48,6 +48,9 @@
   let addCart = document.querySelector(".container");
    //look up dynamic event listeners (event delegation)
   let viewCart = document.querySelector("view-cart");
+
+  let cart = []
+
   addCart.addEventListener("click", function (e) {
     let productId = e.target.getAttribute("data-product");
     let productArray = document.querySelectorAll(`[data-product~="${productId}"]`)
@@ -57,8 +60,11 @@
       type: productArray[2].innerHTML.trim(),
       price: parseInt(productArray[3].innerHTML.trim()),
     }
-    console.log(cartObj)
-    jsonCart = JSON.stringify(cartObj);
+
+    cart.push(cartObj)
+
+    console.log(cart)
+    jsonCart = JSON.stringify(cart);
     localStorage.setItem("cart", jsonCart);
   });
 </script>
