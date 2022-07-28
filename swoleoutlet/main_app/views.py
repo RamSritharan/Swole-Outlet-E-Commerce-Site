@@ -11,6 +11,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 # Define the home view
@@ -86,6 +87,7 @@ def cart_index(request):
 
 class CreateCheckoutSeshView(View):
   def post(self, request, *args, **kwargs):
+    price = Product.objects.filter(product_id = id).price # clarify how to grab price for product
     YOUR_DOMAIN = "http://localhost:8000/"
     checkout_session = stripe.checkout.Session.create ( #storing stripe api in variable checkout session
       payment_method_types = ["card"],
@@ -95,10 +97,14 @@ class CreateCheckoutSeshView(View):
           },
         ],
         mode='payment',
-        success_url=YOUR_DOMAIN + '/success.html',
+        success_url=YOUR_DOMAIN + '/success',
         cancel_url=YOUR_DOMAIN + '/cart',
     )
-    return JsonResponse({ #takes a dict
-      "id": checkout_session.id #use id on front end for unique stripe checkout session
-    })   
+    return redirect(checkout_session.url) 
 
+class SuccessView(TemplateView):
+    template_name = "success.html"
+
+
+class CancelView(TemplateView):
+    template_name = "cancel.html"

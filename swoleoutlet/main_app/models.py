@@ -10,6 +10,8 @@ class Order(models.Model):
   total = models.IntegerField() 
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+#add boolean field if order went through or not
+
   def __str__(self):
       return self.name
 
