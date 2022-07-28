@@ -23,8 +23,9 @@ class Product(models.Model):
   price = models.IntegerField()
   quantity_available = models.IntegerField()
   product_description = models.TextField(max_length=250)
-  #image = models.ImageField(upload_to="images/")
-  # orders = models.ManyToManyField(Order)
+  # image = models.ImageField(upload_to="main_app/static/css/images")
+  image = models.ImageField(upload_to="main_app/static/css/images", null=True, blank=True)
+  orders = models.ManyToManyField(Order, null = True, blank=True)
 
   def __str__(self):
     return self.name
