@@ -2,6 +2,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.conf import settings
 
 class Order(models.Model):
   date = models.DateField('order date')
@@ -48,11 +49,11 @@ class Review(models.Model):
   time_published = models.DateTimeField(auto_now_add=True)
   publisher = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return str(self.publisher)
+  def __str__(self):
+    return str(self.publisher)
 
-    class Meta:
-        ordering = ['-time_published']
+  class Meta:
+    ordering = ['-time_published']
     
       
 
