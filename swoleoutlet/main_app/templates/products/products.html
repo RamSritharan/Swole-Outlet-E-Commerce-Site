@@ -64,10 +64,9 @@
     let cart = []
     cart.push(cartObj); 
 
-    console.log(cart)
     
     let jsonCart = JSON.stringify(cart);
-    localStorage.setItem("cart", cart);
+    localStorage.setItem("cart", jsonCart);
     
     //create a js file, have table row. document.createelment(td) save that to a variable. 
   });

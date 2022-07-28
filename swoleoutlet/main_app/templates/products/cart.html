@@ -12,7 +12,6 @@
 
   let productList = document.querySelector(".list");
 
-  if (cartItems > 0) {
     cartItems.forEach(function (m) {
       let product = document.createElement("div");
       product.className = `product-card - ${m.id}`;
@@ -22,7 +21,6 @@
       console.log(product);
 
     });
-  }
 </script>
 
 {% endblock %}
