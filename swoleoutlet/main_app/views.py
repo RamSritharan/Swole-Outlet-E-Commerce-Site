@@ -73,7 +73,14 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 def cart_index(request):
-  return render(request, 'products/cart.html', {})
+  total=0
+  for item in cart.items.all():
+    total += item.price
+    cart_total = total
+    total_items = len(cart.items.all())
+    
+  return render(request, 'products/cart.html', {'cart':cart, 'cart_total':cart_total, 'total_items':total_items})
+
 
 class CreateCheckoutSeshView(View):
   def post(self, request, *args, **kwargs):
