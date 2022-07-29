@@ -10,10 +10,6 @@
     {% if product.image %}
     <img src="{{product.image.url}}" width="30%" height="30%"/>
     {% endif %}
-    <!-- <div class="card">
-        <div class="card-content"> -->
-    <!-- <span class="card-title">{{ product.name }}</span> -->
-    <!-- <p>{{ product.name }}</br>{{ product.product_description }}</br> ${{ product.price }} </p> -->
     
     <p hidden id="product-id" data-product="{{product.id}}" class="product-id">
       {{product.id}}
@@ -30,9 +26,6 @@
     <p id="product-description" class="product-description">
       Description: {{ product.product_description }}
     </p>
-    <!-- </div>
-      </div> -->
-        <!-- <input type="submit" class="btn-add" value="Add To Cart" /> -->
         <button data-product="{{product.id}}" class="btn-add">
           Add to cart
         </button>
