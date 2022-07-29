@@ -1,10 +1,15 @@
 {% extends 'base.html' %} {% block content %}
+
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+<script src="https://js.stripe.com/v3/"></script>
+
 <h1>
-  <img src="../static/images/swoledoge.jpeg" width="7%" height="7%" /> Your Cart
+  <img src="../static/images/swoledoge.jpeg" width="7%" height="7%" />Checkout
 </h1>
+
 <hr />
 
-<p>ITEMS IN YOUR CART</p>
+<p>Order Details</p>
 <table id="myTable">
   <th>Item</th>
   <th>Type</th>
@@ -18,7 +23,8 @@
   </tr>
 </table>
 <div class="checkout">
-  <a href="/checkout/"><button type="button">Check Out</button></a>
+  <form action="/create-checkout-session" method="POST">
+    <button type="submit">Checkout</button>
 </div>
 
 <script>

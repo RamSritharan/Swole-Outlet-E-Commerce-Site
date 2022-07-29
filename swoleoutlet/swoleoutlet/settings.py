@@ -121,10 +121,14 @@ USE_TZ = True
 STATIC_URL = 'static/'
 LOGIN_REDIRECT_URL = '/products/'
 LOGOUT_REDIRECT_URL = '/'
+STRIPE_PUBLIC_KEY = 'pk_test_51LQFTXKrU0xm2AHUFfU5SFuY0WV4WQHd2vMoBE1QcmFNt5ROanhFjrCzebzgl2i8DpIX9EAsEiKdejq6HFHjJMUJ00fD7Ryz8O'
 
+STRIPE_PRIVATE_KEY = 'sk_test_51LQFTXKrU0xm2AHUzaOcWcFYKBbqqJPKFvmRlRElTFc6afkRRWQVc4vud6Ud51JtDvIE0zoFnI93rtm3KrhIXLVJ00znpIuX6v'
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
