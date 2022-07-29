@@ -42,6 +42,24 @@ th {
   border: 2px solid #ffcf1f;
 }
 
+.swole {
+  color: #ffcf1f;
+}
+
+.thankyouimage {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.thankyou {
+  font-style: italic;
+  font-size: 35px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
 table {
   text-align: center;
   width: 100%;
@@ -75,6 +93,8 @@ ul {
   text-align: left;
   width: 45%;
 }
+
+.btn-home,
 .btn-submit,
 .btn-review,
 .btn-buy,
@@ -113,6 +133,7 @@ ul {
   border-radius: 1.5em;
 }
 
+.btn-home:hover,
 .btn-submit:hover,
 .btn-review:hover,
 .btn-buy:hover,

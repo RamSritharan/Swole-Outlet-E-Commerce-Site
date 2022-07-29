@@ -48,13 +48,13 @@
       </div>
     </div> -->
     <div class="row">
-      <button class="btn-submit" type="submit" value="Submit">Submit</button>
+      <!-- <button class="btn-submit" type="submit" value="Submit">Submit</button> -->
     </div>
   </form>
 </div>
 
 <div class="col s6">
-  <form action="/order_list" method="POST">
+  <form action="{% url 'add_review' product_id %}" method="POST">
     {% csrf_token %}
     {{ review_form.as_p }}
     
@@ -74,6 +74,7 @@
       {% endfor %}
     </tbody>
   </table>
+  <button class="btn-submit" type="submit" value="Submit">Submit</button>
   <!-- <input type="submit" class="btn" value="Add Review"> -->
 </div>
 </div>

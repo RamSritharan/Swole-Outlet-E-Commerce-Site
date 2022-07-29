@@ -9,6 +9,7 @@ urlpatterns = [
   path('cart/', views.cart_index, name='cart'),
   path('checkout/', views.checkout_index, name='checkout'),
   path('products/<int:product_id>/', views.products_detail, name='detail'),
+  path('products/<int:products_id>/add_review/', views.add_review, name='add_review'),
   # associate a order with a product (M:M)
   path('products/<int:product_id>/assoc_order/<int:order_id>/', views.assoc_order, name='assoc_order'),
   # unassociate a order and product
