@@ -93,4 +93,8 @@ def add_review(request, product_id):
   new_review.save()
   return redirect('order_list', product_id=product_id)
 
+def checkout_index(request):
+  return render(request, "products/checkout_list.html", {})
 
+def thanks(request):
+    return render(request, 'thanks.html')

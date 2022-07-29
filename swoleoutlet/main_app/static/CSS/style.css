@@ -65,12 +65,15 @@ ul {
 }
 
 .login-page {
+  display: flex;
   text-align: center;
+  width: 100%;
+  justify-content: center;
 }
 
 .sign-up {
   text-align: left;
-  width: 100%;
+  width: 45%;
 }
 .btn-submit,
 .btn-review,
