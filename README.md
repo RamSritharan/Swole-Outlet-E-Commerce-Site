@@ -3,7 +3,7 @@ Welcome to SwoleOutlet where you can find all your athletic apparel needs!!
 Products on the store are DEFINITELY NOT from GYMSHARK!
 
 
-##Technologies Used
+## Technologies Used
 - HTML
 - CSS
 - Django
