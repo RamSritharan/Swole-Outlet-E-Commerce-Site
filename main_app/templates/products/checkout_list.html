@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block content %}
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<h1>
+  <img src="../static/images/swoledoge.jpeg" width="7%" height="7%" />Checkout
+</h1>
+<hr />
+<p>Order Details</p>
+<table id="myTable">
+  <th># Items</th>
+  <th>Subtotal($)</th>
+  <th>Tax($)</th>
+  <th>Total</th>
+  <tr>
+    <td class="Quantity"></td>
+    <td class="Subtotal"></td>
+    <td class="Tax">Total</td>
+    <td class="Total-Amount"></td>
+  </tr>
+</table>
+<div class="checkout">
+  
+  <form action="/thanks/" method="POST">
+    {% csrf_token %}
+    <button type="submit">Checkout</button>
+</div>
+<script>
+  let cartItems = JSON.parse(localStorage.getItem("cart"));
+  console.log(cartItems);
+  let table = document.getElementById("myTable");
+  let qty = 0;
+  let amt = 0; 
+  let tax = 0;
+  let Total = 0; 
+
+  let totalAm = document.querySelector(".Total-Amount")
+  let subTotal = document.querySelector(".Subtotal")
+  let totalTax = document.querySelector(".Tax")
+  let Quantity = document.querySelector(".Quantity")
+
+  cartItems.forEach(function (m) {
+    qty++;
+    Quantity.innerHTML = qty;
+    amt += m.price; 
+    subTotal.innerHTML = amt;
+    tax = amt * 0.13;
+    totalTax.innerHTML = tax;
+    totalAm.innerHTML = amt + tax;
+    //query selector all the total column and then sum them.
+  });
+</script>
+{% endblock %}

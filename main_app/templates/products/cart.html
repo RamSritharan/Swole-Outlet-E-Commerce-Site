@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block content %}
+<h1>
+  <img src="../static/images/swoledoge.jpeg" width="7%" height="7%" /> Your Cart
+</h1>
+<hr />
+<p>ITEMS IN YOUR CART</p>
+<table id="myTable">
+  <th>Item</th>
+  <th>Type</th>
+  <th>Quantity</th>
+  <th>Total($)</th>
+  <tr>
+    <td class="item1"></td>
+    <td class="Type"></td>
+    <td class="Quantity">Total</td>
+    <td class="Total-Amount"></td>
+  </tr>
+</table>
+<div class="checkout">
+  <a href="/checkout/"><button type="button">Check Out</button></a>
+</div>
+<script>
+  let cartItems = JSON.parse(localStorage.getItem("cart"));
+  console.log(cartItems);
+  let table = document.getElementById("myTable");
+  let totalAm = 0;
+  cartItems.forEach(function (m) {
+    let row = table.insertRow(1);
+    let col1 = row.insertCell(0);
+    let col2 = row.insertCell(1);
+    let col3 = row.insertCell(2);
+    let col4 = row.insertCell(3);
+    col1.innerHTML = m.name;
+    col2.innerHTML = m.type;
+    col3.innerHTML = 1;
+    col4.innerHTML = m.price;
+    col4.classList.add("totalPrice");
+    totalCol = document.querySelector(".totalPrice");
+    totalAm += m.price;
+    document.querySelector(".Total-Amount").innerHTML = totalAm;
+    //query selector all the total column and then sum them.
+  });
+</script>
+{% endblock %}
