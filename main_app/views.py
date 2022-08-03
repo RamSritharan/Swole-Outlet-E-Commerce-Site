@@ -87,7 +87,6 @@ def product(request):
   })  
 
 
-
 def checkout_index(request):
   return render(request, "products/checkout_list.html", {})
 

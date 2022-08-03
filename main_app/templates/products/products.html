@@ -29,13 +29,15 @@
         <button data-product="{{product.id}}" class="btn-add">
           Add to cart
         </button>
-        <button class="view-cart">
-          View Cart
-        </button>
+   
   </div>
 </br>
 </div>
 {% endfor %} 
+<button style="transform: translateX(1200px)" onclick="window.location.href='/cart/'">
+  View Cart
+</button>
+
 <script>
   let addCart = document.querySelector(".container");
    //look up dynamic event listeners (event delegation)
