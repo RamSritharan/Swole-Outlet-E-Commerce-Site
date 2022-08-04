@@ -8,8 +8,8 @@
   {% for product in products %}
   <div class="column">
     {% if product.image %}
-    <img src="{{product.image.url}}" width="30%" height="30%"/>
-    {% endif %}
+    <!-- <img src="{{product.image.url}}" width="30%" height="30%"/>-->
+    {% endif %} 
     
     <p hidden id="product-id" data-product="{{product.id}}" class="product-id">
       {{product.id}}
