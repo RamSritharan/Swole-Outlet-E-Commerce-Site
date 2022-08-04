@@ -1,1 +1,1 @@
-web: gunicorn swoleoutletstore.wsgi
+web: gunicorn theswoleoutletstore.wsgi
