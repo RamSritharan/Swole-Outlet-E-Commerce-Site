@@ -10,13 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 MEDIA_ROOT = ''
 MEDIA_URL = '' 
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -28,6 +31,8 @@ SECRET_KEY = 'django-insecure-^evs6ada%=*ya(9b7(aavsjbjyio8yuyy8*t!bd)r!us$$3e3&
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+WSGI_APPLICATION = 'theswoleoutletstore.wsgi.application'
 
 
 # Application definition
@@ -129,10 +134,11 @@ LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
 # import django_heroku
 # django_heroku.settings(locals())
 
 import django_heroku
 django_heroku.settings(locals())
 
-#WSGI_APPLICATION = 'theswoleoutletstore.wsgi.application'
